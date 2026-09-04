@@ -1,0 +1,24 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor Files
+.idea/
+.vscode/
+
+# Build and Output Files
+node_modules/
+build/
+dist/
+
+# Dependency and Package Files
+package-lock.json
+yarn.lock
+
+# Environment and Configuration Files
+.env
+
+# Log and Temporary Files
+*.log
+*.tmp
+temp/
