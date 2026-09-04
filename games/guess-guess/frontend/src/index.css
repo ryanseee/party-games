@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/50 backdrop-blur-sm border border-gray-100 shadow-sm;
+  }
+
+  .glass-header {
+    @apply bg-white/80 backdrop-blur-sm border-b border-gray-100;
+  }
+
+  .glass-footer {
+    @apply bg-white/80 backdrop-blur-sm border-t border-gray-100;
+  }
+}
