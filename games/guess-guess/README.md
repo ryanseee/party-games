@@ -1,18 +1,16 @@
-# CaiCai - Real-time Photo Sharing Game
+# Guess Guess - Real-time Photo Sharing Game
 
-CaiCai is a real-time photo sharing and management application that allows users to create sessions, upload photos, and assign them to participants in a fun and interactive way.
+Guess Guess is a real-time photo sharing and management application that allows users to create sessions, upload photos, and assign them to participants in a fun and interactive way.
 
 ## Features
 
 - **Session Management**
-
   - Create unique 6-character session codes
   - Join sessions as participants
   - Real-time participant updates
   - Session expiry and cleanup
 
 - **Photo Management**
-
   - Upload multiple photos
   - Automatic or manual photo assignment
   - Real-time photo updates
@@ -95,7 +93,7 @@ SESSION_CODE_LENGTH=6
 
 ```bash
 git clone <repository-url>
-cd cai-cai
+cd guess-guess
 ```
 
 2. Install dependencies
