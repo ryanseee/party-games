@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --chalk-paper: #e8eaed;
+    --chalk-surface: #f1f3f4;
+    --chalk-white: #ffffff;
+    --chalk-ink: #121212;
+    --chalk-muted: #5f6368;
+    --chalk-grid: #9aa0a6;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: "Space Mono", monospace;
+    color: var(--chalk-ink);
+    background: var(--chalk-paper);
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--chalk-paper);
+    background-image:
+      radial-gradient(var(--chalk-grid) 1px, transparent 1px),
+      radial-gradient(var(--chalk-grid) 1px, var(--chalk-paper) 1px);
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 8px;
+    -webkit-font-smoothing: none;
+    text-rendering: geometricPrecision;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Press Start 2P", monospace !important;
+    letter-spacing: 0 !important;
+  }
+
+  p {
+    font-family: "Space Mono", monospace !important;
+  }
+
+  button,
+  label {
+    font-family: "Silkscreen", monospace !important;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: "Space Mono", monospace !important;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  a:focus-visible {
+    outline: 3px solid #121212;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .scanlines {
+    position: relative;
+  }
+
+  .scanlines::before {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    content: "";
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      transparent 50%,
+      rgba(0, 0, 0, 0.035) 50%,
+      rgba(0, 0, 0, 0.035)
+    );
+    background-size: 100% 4px;
+  }
+
+  .pixel-heading {
+    font-family: "Press Start 2P", monospace;
+    letter-spacing: 0;
+    line-height: 1.7;
+  }
+
+  .pixel-label {
+    font-family: "Silkscreen", monospace;
+    letter-spacing: 0;
+  }
+
+  [class*="bg-[#edeef0]"][class*="border"] {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e8eaed !important;
+    border: 2px solid #121212 !important;
+    box-shadow: 2px 2px 0 #121212;
+    color: #121212;
+    font-family: "Silkscreen", monospace !important;
+    letter-spacing: 0;
+  }
+}

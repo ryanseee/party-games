@@ -1,33 +1,68 @@
-# 🎮 Party Games Monorepo
+# Party Games
 
-Welcome to the **Party Games** repository! This is a monorepo workspace hosting a collection of real-time multiplayer and interactive party games.
+Pixel-art multiplayer party games in an npm workspace monorepo.
 
-## 🏗️ Project Structure
-
-Each game lives inside its own independent folder within the `games/` directory, complete with its own frontend, backend, and environment setup.
+## Current apps
 
 ```text
-.
-├── games/
-│   └── guess-guess/         # Real-time Photo Guessing Game
-│       ├── frontend/        # React Application
-│       └── backend/         # Node.js Server
-└── README.md
+apps/
+├── hub/frontend/                 # Game launcher at http://localhost:5173
+└── games/who-who/
+	├── frontend/                 # Who Who client at http://localhost:8080
+	└── backend/                  # Express + Socket.IO server at http://localhost:3000
 ```
 
----
+Who Who currently stores sessions and photos in memory. Restarting the backend clears active sessions.
 
-## 🛠️ How to Play & Develop
+## Requirements
 
-To get started, clone the repository and navigate into the specific game you want to run.
+- Node.js 18 or newer
+- npm 9 or newer
+
+## Install
 
 ```bash
-# Clone the repository
-git clone <your-repository-url>
-cd party-games
-
-# Go to the game directory
-cd games/guess-guess
+npm install
 ```
 
-_Note: For installation instructions, prerequisites, and environment variable setup, please check the **README.md** located inside each individual game folder._
+## Development
+
+Run the Hub, Who Who frontend, and Who Who backend together from this directory:
+
+```bash
+npm run dev
+```
+
+Open the Hub at <http://localhost:5173>.
+
+To run one workspace separately:
+
+```bash
+npm run dev:hub
+npm run dev:who-who-frontend
+npm run dev:who-who-backend
+```
+
+## Build
+
+Build all active apps:
+
+```bash
+npm run build
+```
+
+Build a specific workspace:
+
+```bash
+npm run build:hub
+npm run build -w apps/games/who-who/frontend
+npm run build -w apps/games/who-who/backend
+```
+
+## Who Who flow
+
+1. Create a session from the Admin page.
+2. Share the generated six-character code.
+3. Participants join from the Hub or `/join` page.
+4. The host uploads photos and assigns them automatically or manually.
+5. Participants see their assigned photo in real time.

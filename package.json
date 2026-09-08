@@ -1,0 +1,22 @@
+{
+  "name": "party-games-platform",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/hub/frontend",
+    "apps/games/who-who/frontend",
+    "apps/games/who-who/backend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"HUB,WHO-FE,WHO-BE\" -c \"cyan,green,yellow\" \"npm run dev -w apps/hub/frontend\" \"npm run dev -w apps/games/who-who/frontend\" \"npm run dev -w apps/games/who-who/backend\"",
+    "dev:hub": "npm run dev -w apps/hub/frontend",
+    "dev:who-who-frontend": "npm run dev -w apps/games/who-who/frontend",
+    "dev:who-who-backend": "npm run dev -w apps/games/who-who/backend",
+    "build": "npm run build:hub && npm run build:who-who",
+    "build:hub": "npm run build -w apps/hub/frontend",
+    "build:who-who": "npm run build -w apps/games/who-who/frontend && npm run build -w apps/games/who-who/backend"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

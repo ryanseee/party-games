@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Crisp retro pixel rendering */
+* {
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+  text-rendering: geometricPrecision;
+}
+
+body {
+  background-color: #e8eaed;
+  background-image:
+    radial-gradient(#9aa0a6 1px, transparent 1px),
+    radial-gradient(#9aa0a6 1px, #e8eaed 1px);
+  background-size: 16px 16px;
+  background-position:
+    0 0,
+    8px 8px;
+}
+
+/* CRT scanlines effect */
+.scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.04) 50%,
+    rgba(0, 0, 0, 0.04)
+  );
+  background-size: 100% 4px;
+}
