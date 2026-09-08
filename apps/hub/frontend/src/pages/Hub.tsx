@@ -8,7 +8,7 @@ const Hub: React.FC = () => {
   const handleEnterRoom = (e: React.FormEvent) => {
     e.preventDefault();
     if (!roomCode.trim()) return;
-    window.location.href = `http://localhost:8080/join?code=${encodeURIComponent(roomCode.trim().toUpperCase())}`;
+    window.location.href = `http://localhost:5101/join?code=${encodeURIComponent(roomCode.trim().toUpperCase())}`;
   };
 
   const handleLaunchGame = (url: string) => {

@@ -7,23 +7,19 @@ import { db } from "./lib/database";
 
 dotenv.config();
 
-const requiredEnvVars = ["PORT", "CORS_ORIGIN"];
-for (const envVar of requiredEnvVars) {
-  if (!process.env[envVar]) {
-    throw new Error(`Missing required environment variable: ${envVar}`);
-  }
-}
-
 const app = express();
 const httpServer = createServer(app);
 
+const allowedOrigins = (
+  process.env.CORS_ORIGIN ||
+  "http://localhost:5101,http://localhost:5173"
+)
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "http://localhost:8080",
-    "http://168.138.186.220:3000",
-    "http://168.138.186.220:8080",
-  ],
+  origin: allowedOrigins,
   methods: ["GET", "POST"],
   credentials: true,
 };
@@ -318,7 +314,7 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = parseInt(process.env.PORT || "3000", 10);
+const PORT = parseInt(process.env.PORT || "5201", 10);
 const HOST = process.env.HOST || "0.0.0.0";
 httpServer.listen(PORT, HOST, () => {
   console.log(`In-memory server running on port ${PORT}`);

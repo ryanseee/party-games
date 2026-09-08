@@ -20,7 +20,7 @@ export const GAME_CATALOG: GameInfo[] = [
     maxPlayers: 50,
     description:
       "Everyone gets a secret photo identity assigned by the host. Ask questions and guess assignments before your time runs out.",
-    url: "http://localhost:8080",
+    url: "http://localhost:5101",
     enabled: true,
   },
   {

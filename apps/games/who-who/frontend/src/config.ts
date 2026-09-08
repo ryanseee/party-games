@@ -1,5 +1,5 @@
 // Base URL for the API and socket connection
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5201";
 
 // Ensure API_URL ends with a trailing slash
 export const API_URL = BASE_URL.endsWith("/") ? BASE_URL : `${BASE_URL}/`;

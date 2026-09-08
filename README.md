@@ -8,8 +8,8 @@ Pixel-art multiplayer party games in an npm workspace monorepo.
 apps/
 ├── hub/frontend/                 # Game launcher at http://localhost:5173
 └── games/who-who/
-	├── frontend/                 # Who Who client at http://localhost:8080
-	└── backend/                  # Express + Socket.IO server at http://localhost:3000
+	├── frontend/                 # Who Who client at http://localhost:5101
+	└── backend/                  # Express + Socket.IO server at http://localhost:5201
 ```
 
 Who Who currently stores sessions and photos in memory. Restarting the backend clears active sessions.
@@ -34,6 +34,16 @@ npm run dev
 ```
 
 Open the Hub at <http://localhost:5173>.
+
+The local development port convention is:
+
+```text
+5173  Hub
+5101  Who Who frontend
+5201  Who Who backend
+```
+
+The backend accepts `PORT` and comma-separated `CORS_ORIGIN` environment variables when these defaults need to change.
 
 To run one workspace separately:
 
