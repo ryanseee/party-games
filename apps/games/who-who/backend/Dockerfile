@@ -1,17 +1,17 @@
-# Use an official Node runtime as a parent image
-FROM node:lts-alpine
+FROM node:20-alpine AS build
 
-# Set the working directory in the container
 WORKDIR /backend
+COPY package*.json ./
+RUN npm ci
+COPY tsconfig.json ./
+COPY src ./src
+RUN npm run build
 
-# Copy the current directory contents into the container at /app
-COPY . /backend
+FROM node:20-alpine
 
-# Install any needed packages specified in package.json
-RUN npm install
-
-# Make port 3000 available to the world outside this container
-EXPOSE 3000
-
-# Run app.js when the container launches
-CMD ["npm", "run", "dev"]
+WORKDIR /backend
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY --from=build /backend/dist ./dist
+EXPOSE 5201
+CMD ["node", "dist/index.js"]

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GAME_CATALOG } from "../config/games";
+import { GAME_CATALOG, WHO_WHO_URL } from "../config/games";
 
 const Hub: React.FC = () => {
   const [roomCode, setRoomCode] = useState("");
@@ -8,7 +8,7 @@ const Hub: React.FC = () => {
   const handleEnterRoom = (e: React.FormEvent) => {
     e.preventDefault();
     if (!roomCode.trim()) return;
-    window.location.href = `http://localhost:5101/join?code=${encodeURIComponent(roomCode.trim().toUpperCase())}`;
+    window.location.href = `${WHO_WHO_URL}/join?code=${encodeURIComponent(roomCode.trim().toUpperCase())}`;
   };
 
   const handleLaunchGame = (url: string) => {

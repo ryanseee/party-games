@@ -10,6 +10,9 @@ export interface GameInfo {
   enabled: boolean;
 }
 
+export const WHO_WHO_URL =
+  import.meta.env.VITE_WHO_WHO_URL || "http://localhost:5101";
+
 export const GAME_CATALOG: GameInfo[] = [
   {
     id: "who-who",
@@ -20,7 +23,7 @@ export const GAME_CATALOG: GameInfo[] = [
     maxPlayers: 50,
     description:
       "Everyone gets a secret photo identity assigned by the host. Ask questions and guess assignments before your time runs out.",
-    url: "http://localhost:5101",
+    url: WHO_WHO_URL,
     enabled: true,
   },
   {

@@ -11,8 +11,7 @@ const app = express();
 const httpServer = createServer(app);
 
 const allowedOrigins = (
-  process.env.CORS_ORIGIN ||
-  "http://localhost:5101,http://localhost:5173"
+  process.env.CORS_ORIGIN || "http://localhost:5101,http://localhost:5173"
 )
   .split(",")
   .map((origin) => origin.trim())
