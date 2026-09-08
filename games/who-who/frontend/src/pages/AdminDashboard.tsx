@@ -140,11 +140,8 @@ const AdminDashboard: React.FC = () => {
       const newUploadedPhotos = await Promise.all(compressPromises);
 
       if (newUploadedPhotos.length > 0) {
+        // Upload photos to photo pool without auto-triggering photo assignment
         await uploadPhotos(newUploadedPhotos);
-
-        if (isAutoAssign) {
-          assignPhotos();
-        }
       }
     } catch (err) {
       console.error("Failed to process image uploads:", err);
@@ -481,22 +478,39 @@ const AdminDashboard: React.FC = () => {
                     </div>
                   ) : (
                     <ul className="space-y-2">
-                      {participants.map((p: any, idx: number) => (
-                        <li
-                          key={p.id || idx}
-                          className="flex items-center justify-between bg-[#f8f9fb] border-2 border-[#06080c] p-2.5"
-                        >
-                          <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 bg-[#06080c]" />
-                            <span className="font-['JetBrains_Mono'] text-xs font-bold text-[#06080c]">
-                              {p.name}
+                      {participants.map((p: any, idx: number) => {
+                        const assignedPhoto = photos.find(
+                          (photo) => photo.id === p.photo_assigned,
+                        );
+
+                        return (
+                          <li
+                            key={p.id || idx}
+                            className="flex items-center justify-between bg-[#f8f9fb] border-2 border-[#06080c] p-2.5"
+                          >
+                            <div className="flex items-center gap-3">
+                              {/* Thumbnail of assigned photo or placeholder */}
+                              <div className="w-8 h-8 border border-[#06080c] bg-white overflow-hidden flex items-center justify-center shrink-0">
+                                {assignedPhoto ? (
+                                  <img
+                                    src={assignedPhoto.url}
+                                    alt={p.name}
+                                    className="w-full h-full object-cover"
+                                  />
+                                ) : (
+                                  <span className="w-2 h-2 bg-[#06080c]" />
+                                )}
+                              </div>
+                              <span className="font-['JetBrains_Mono'] text-xs font-bold text-[#06080c]">
+                                {p.name}
+                              </span>
+                            </div>
+                            <span className="font-['JetBrains_Mono'] text-[10px] uppercase bg-white border border-[#06080c] px-2 py-0.5 text-[#06080c]">
+                              {p.photo_assigned ? "ASSIGNED" : "WAITING"}
                             </span>
-                          </div>
-                          <span className="font-['JetBrains_Mono'] text-[10px] uppercase bg-white border border-[#06080c] px-2 py-0.5 text-[#06080c]">
-                            {p.photo_assigned ? "ASSIGNED" : "WAITING"}
-                          </span>
-                        </li>
-                      ))}
+                          </li>
+                        );
+                      })}
                     </ul>
                   )}
                 </div>

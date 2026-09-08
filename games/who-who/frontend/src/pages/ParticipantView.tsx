@@ -179,23 +179,6 @@ const ParticipantView: React.FC = () => {
               </div>
             </div>
           )}
-
-          {/* Guidelines Box */}
-          <div className="mt-8 pt-6 border-t-2 border-[#06080c]">
-            <span className="font-['JetBrains_Mono'] text-[10px] uppercase tracking-widest text-[#45474b] font-bold block mb-2">
-              PLAYER DIRECTIVES
-            </span>
-            <ul className="space-y-2 font-['JetBrains_Mono'] text-xs text-[#06080c]">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#06080c]" />
-                Keep your secret photo hidden from adjacent players.
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#06080c]" />
-                Wait for host prompts before revealing details.
-              </li>
-            </ul>
-          </div>
         </div>
 
         {/* Exit Confirmation Modal */}
