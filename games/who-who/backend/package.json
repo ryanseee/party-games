@@ -1,7 +1,7 @@
 {
-  "name": "caicai-server",
+  "name": "whowho-server",
   "version": "1.0.0",
-  "description": "Backend server for CaiCai game",
+  "description": "Backend server for Who Who game",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
