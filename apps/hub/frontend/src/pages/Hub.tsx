@@ -61,7 +61,7 @@ const Hub: React.FC = () => {
 
           <div className="max-w-3xl">
             <h1 className="font-['Press_Start_2P',_monospace] text-xl sm:text-2xl md:text-3xl font-black text-[#121212] tracking-tight leading-relaxed mb-3">
-              OUT OF CHALK // PARTY HUB
+              PARTY HUB
             </h1>
             <p className="font-['Space_Mono',_monospace] text-sm md:text-base text-[#202124] leading-relaxed max-w-2xl mb-6">
               Minimalist multiplayer parlor games on a shared digital slate.

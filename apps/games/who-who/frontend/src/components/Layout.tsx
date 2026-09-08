@@ -28,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               ?
             </span>
             <span className="font-['Press_Start_2P',_monospace] text-xs uppercase tracking-wider text-[#121212] sm:text-sm">
-              WHO WHO // PARLOR
+              WHO WHO
             </span>
           </Link>
 
@@ -43,7 +43,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <Link
                   key={item.path}
                   to={item.path}
-                    className={`border-2 px-3 py-1 uppercase transition-colors ${
+                  className={`border-2 px-3 py-1 uppercase transition-colors ${
                     isActive
                       ? "border-[#121212] bg-[#121212] text-[#f1f3f4] shadow-[2px_2px_0px_#121212]"
                       : "border-transparent text-[#5f6368] hover:border-[#121212] hover:text-[#121212]"
@@ -80,9 +80,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <span className="font-['Silkscreen',_monospace] text-[10px] text-[#5f6368]">
               [CARTRIDGE 01]
             </span>
-          </div>
-          <div className="font-['Silkscreen',_monospace] text-[10px] text-[#5f6368]">
-            OUT OF CHALK // PHOTO PARLOR
           </div>
           <div className="flex items-center gap-4 font-['Silkscreen',_monospace] text-[10px]">
             <span className="border border-[#121212] bg-white px-2 py-0.5 font-bold text-[#121212]">

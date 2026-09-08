@@ -31,7 +31,9 @@
       radial-gradient(var(--chalk-grid) 1px, transparent 1px),
       radial-gradient(var(--chalk-grid) 1px, var(--chalk-paper) 1px);
     background-size: 16px 16px;
-    background-position: 0 0, 8px 8px;
+    background-position:
+      0 0,
+      8px 8px;
     -webkit-font-smoothing: none;
     text-rendering: geometricPrecision;
   }
