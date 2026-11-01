@@ -112,30 +112,30 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
   const availablePhotos = getAvailablePhotos();
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#06080c]/80 flex items-center justify-center p-4">
-      <div className="bg-white border-2 border-[#06080c] shadow-[8px_8px_0px_#06080c] w-full max-w-4xl max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-50 bg-gameBorder/80 flex items-center justify-center p-4">
+      <div className="bg-gameSurface border-2 border-gameBorder shadow-[8px_8px_0px_var(--chalk-shadow)] w-full max-w-4xl max-h-[90vh] flex flex-col">
         {/* Modal Header */}
-        <div className="border-b-2 border-[#06080c] p-4 flex items-center justify-between bg-[#f8f9fb]">
+        <div className="border-b-2 border-gameBorder p-4 flex items-center justify-between bg-gameBg">
           <div>
-            <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-[#45474b] font-bold block">
+            <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-gameText bg-gameSuccess px-2 py-0.5 border border-gameBorder font-bold inline-block">
               MANUAL CONTROL // 03
             </span>
-            <h2 className="font-['Space_Mono'] text-lg font-bold text-[#06080c] uppercase">
+            <h2 className="font-['Space_Mono'] text-lg font-bold text-gameText uppercase">
               Manual Photo Assignment
             </h2>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="bg-[#06080c] text-white font-['Space_Mono'] text-xs px-3 py-1 border border-[#06080c] hover:bg-[#1e2024] cursor-pointer font-bold"
+            className="bg-gameBorder text-white font-['Space_Mono'] text-xs px-3 py-1 border border-gameBorder hover:brightness-95 cursor-pointer font-bold"
           >
             [ CLOSE ]
           </button>
         </div>
 
         {/* Instructions Banner */}
-        <div className="bg-[#edeef0] border-b-2 border-[#06080c] px-4 py-2">
-          <p className="font-['Space_Mono',_monospace] text-xs text-[#06080c]">
+        <div className="bg-gameCoral border-b-2 border-gameBorder px-4 py-2">
+          <p className="font-['Space_Mono',_monospace] text-xs text-gameText">
             <span className="font-bold">INSTRUCTIONS:</span> Select a
             participant on the left, then click an available photo on the right
             to assign it. Click an assigned participant again to clear their
@@ -147,11 +147,11 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
         <div className="p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
           {/* Left Column: Participants List */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between border-b-2 border-[#06080c] pb-2">
-              <span className="font-['Space_Mono'] text-sm font-bold uppercase text-[#06080c]">
+            <div className="flex items-center justify-between border-b-2 border-gameBorder pb-2">
+              <span className="font-['Space_Mono'] text-sm font-bold uppercase text-gameText">
                 Participants ({participants.length})
               </span>
-              <span className="font-['Space_Mono',_monospace] text-[10px] text-[#45474b]">
+              <span className="font-['Space_Mono',_monospace] text-[10px] text-gameMuted">
                 {selectedParticipant ? "1 SELECTED" : "SELECT A PLAYER"}
               </span>
             </div>
@@ -167,14 +167,14 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
                     <div
                       key={participant.id}
                       onClick={() => handleParticipantClick(participant.id)}
-                      className={`p-3 border-2 border-[#06080c] cursor-pointer transition-all flex items-center justify-between shadow-[2px_2px_0px_#06080c] ${
+                      className={`p-3 border-2 border-gameBorder cursor-pointer transition-all flex items-center justify-between shadow-[2px_2px_0px_var(--chalk-shadow)] ${
                         isSelected
-                          ? "bg-[#06080c] text-white"
-                          : "bg-[#f8f9fb] hover:bg-[#edeef0] text-[#06080c]"
+                          ? "bg-gameAccent text-gameText"
+                          : "bg-gameBg hover:bg-gameGold text-gameText"
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 border border-[#06080c] bg-white overflow-hidden flex items-center justify-center shrink-0">
+                        <div className="w-10 h-10 border border-gameBorder bg-gameSurface overflow-hidden flex items-center justify-center shrink-0">
                           {assignedPhoto ? (
                             <img
                               src={assignedPhoto.url}
@@ -182,7 +182,7 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
                               className="w-full h-full object-cover"
                             />
                           ) : (
-                            <span className="font-['Space_Mono',_monospace] text-[10px] text-[#76777b]">
+                            <span className="font-['Space_Mono',_monospace] text-[10px] text-gameMuted">
                               NONE
                             </span>
                           )}
@@ -193,7 +193,7 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
                           </p>
                           <p
                             className={`font-['Space_Mono',_monospace] text-[10px] ${
-                              isSelected ? "text-gray-300" : "text-[#45474b]"
+                              isSelected ? "text-gameText" : "text-gameMuted"
                             }`}
                           >
                             {assignedPhoto
@@ -204,7 +204,7 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
                       </div>
 
                       {isSelected && (
-                        <span className="font-['Space_Mono',_monospace] text-[10px] bg-white text-[#06080c] px-2 py-0.5 font-bold uppercase border border-[#06080c]">
+                        <span className="font-['Space_Mono',_monospace] text-[10px] bg-gameSurface text-gameText px-2 py-0.5 font-bold uppercase border border-gameBorder">
                           TARGET
                         </span>
                       )}
@@ -216,18 +216,18 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
 
           {/* Right Column: Available Photos Grid */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between border-b-2 border-[#06080c] pb-2">
-              <span className="font-['Space_Mono'] text-sm font-bold uppercase text-[#06080c]">
+            <div className="flex items-center justify-between border-b-2 border-gameBorder pb-2">
+              <span className="font-['Space_Mono'] text-sm font-bold uppercase text-gameText">
                 Available Photos ({availablePhotos.length})
               </span>
             </div>
 
             {availablePhotos.length === 0 ? (
-              <div className="border-2 border-dashed border-[#06080c] bg-[#f8f9fb] p-8 text-center space-y-1">
-                <p className="font-['Space_Mono'] text-xs font-bold uppercase text-[#06080c]">
+              <div className="border-2 border-dashed border-gameBorder bg-gameBg p-8 text-center space-y-1">
+                <p className="font-['Space_Mono'] text-xs font-bold uppercase text-gameText">
                   No Unassigned Photos
                 </p>
-                <p className="font-['Space_Mono',_monospace] text-[10px] text-[#45474b]">
+                <p className="font-['Space_Mono',_monospace] text-[10px] text-gameMuted">
                   All photos in the pool have been assigned or none are
                   uploaded.
                 </p>
@@ -238,7 +238,7 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
                   <div
                     key={photo.id}
                     onClick={() => photo.id && handlePhotoClick(photo.id)}
-                    className={`aspect-square border-2 border-[#06080c] bg-[#06080c] p-1 shadow-[2px_2px_0px_#06080c] transition-transform ${
+                    className={`aspect-square border-2 border-gameBorder bg-gameBorder p-1 shadow-[2px_2px_0px_var(--chalk-shadow)] transition-transform ${
                       selectedParticipant
                         ? "cursor-pointer hover:scale-105 active:scale-95"
                         : "cursor-not-allowed opacity-60"
@@ -247,7 +247,7 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
                     <img
                       src={photo.url}
                       alt={photo.title || "Pool Image"}
-                      className="w-full h-full object-cover border border-[#06080c] bg-white"
+                      className="w-full h-full object-cover border border-gameBorder bg-gameSurface"
                     />
                   </div>
                 ))}
@@ -257,18 +257,18 @@ const ManualAssignmentModal: React.FC<ManualAssignmentModalProps> = ({
         </div>
 
         {/* Modal Footer Controls */}
-        <div className="border-t-2 border-[#06080c] p-4 bg-[#f8f9fb] flex justify-end gap-3">
+        <div className="border-t-2 border-gameBorder p-4 bg-gameBg flex justify-end gap-3">
           <button
             type="button"
             onClick={onClose}
-            className="bg-white text-[#06080c] font-['Space_Mono'] text-xs uppercase px-4 py-2 border-2 border-[#06080c] shadow-[2px_2px_0px_#06080c] hover:bg-[#edeef0] cursor-pointer font-bold"
+            className="bg-gameSurface text-gameText font-['Space_Mono'] text-xs uppercase px-4 py-2 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] hover:bg-gameGold cursor-pointer font-bold"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={handleConfirm}
-            className="bg-[#06080c] text-white font-['Space_Mono'] text-xs uppercase px-4 py-2 border-2 border-[#06080c] shadow-[2px_2px_0px_#76777b] hover:bg-[#1e2024] cursor-pointer font-bold"
+            className="bg-gameMint text-gameText font-['Space_Mono'] text-xs uppercase px-4 py-2 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] hover:brightness-95 cursor-pointer font-bold"
           >
             Confirm Assignments
           </button>

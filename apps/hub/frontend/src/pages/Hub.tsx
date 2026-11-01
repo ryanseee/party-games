@@ -123,29 +123,29 @@ const Hub: React.FC = () => {
                 key={game.id}
                 className="flex flex-col justify-between border-3 transition-[filter,transform] duration-75 hover:brightness-105"
                 style={{
-                  backgroundColor: game.theme.surface,
-                  borderColor: game.theme.ink,
-                  boxShadow: `4px 4px 0px ${game.theme.shadow}`,
+                  backgroundColor: game.theme.palette.surface,
+                  borderColor: game.theme.palette.ink,
+                  boxShadow: `4px 4px 0px ${game.theme.palette.shadow}`,
                 }}
               >
                 <div className="p-5">
                   <div
                     className="flex items-center justify-between pb-3 mb-4 border-b-2"
-                    style={{ borderColor: game.theme.ink }}
+                    style={{ borderColor: game.theme.palette.ink }}
                   >
                     <span
                       className="font-['Silkscreen',_monospace] text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 border"
                       style={{
-                        backgroundColor: game.theme.accent,
-                        color: game.theme.ink,
-                        borderColor: game.theme.ink,
+                        backgroundColor: game.theme.palette.primary,
+                        color: game.theme.palette.ink,
+                        borderColor: game.theme.palette.ink,
                       }}
                     >
                       {game.category}
                     </span>
                     <span
                       className="font-['Space_Mono',_monospace] text-xs font-bold"
-                      style={{ color: game.theme.ink }}
+                      style={{ color: game.theme.palette.ink }}
                     >
                       {game.minPlayers}-{game.maxPlayers} PLAYERS
                     </span>
@@ -156,13 +156,13 @@ const Hub: React.FC = () => {
                     <div>
                       <h3
                         className="font-['Press_Start_2P',_monospace] text-sm md:text-base font-bold mb-1"
-                        style={{ color: game.theme.ink }}
+                        style={{ color: game.theme.palette.ink }}
                       >
                         {game.title}
                       </h3>
                       <span
                         className="text-[11px] font-['Silkscreen',_monospace] block"
-                        style={{ color: game.theme.ink }}
+                        style={{ color: game.theme.palette.ink }}
                       >
                         {game.subtitle}
                       </span>
@@ -171,7 +171,7 @@ const Hub: React.FC = () => {
 
                   <p
                     className="font-['Space_Mono',_monospace] text-xs leading-relaxed mb-4"
-                    style={{ color: game.theme.ink }}
+                    style={{ color: game.theme.palette.ink }}
                   >
                     {game.description}
                   </p>
@@ -185,10 +185,10 @@ const Hub: React.FC = () => {
                     style={
                       game.enabled
                         ? {
-                            backgroundColor: game.theme.accent,
-                            color: game.theme.ink,
-                            borderColor: game.theme.ink,
-                            boxShadow: `4px 4px 0px ${game.theme.shadow}`,
+                            backgroundColor: game.theme.palette.primary,
+                            color: game.theme.palette.ink,
+                            borderColor: game.theme.palette.ink,
+                            boxShadow: `4px 4px 0px ${game.theme.palette.shadow}`,
                           }
                         : undefined
                     }

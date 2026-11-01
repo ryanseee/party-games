@@ -6,9 +6,10 @@ interface GamePreviewProps {
 }
 
 const GamePreview = ({ theme }: GamePreviewProps) => {
+  const { palette, previewColors } = theme;
   const frameStyle = {
-    backgroundColor: theme.sky,
-    borderColor: theme.ink,
+    backgroundColor: previewColors.sky,
+    borderColor: palette.ink,
   };
 
   return (
@@ -21,19 +22,19 @@ const GamePreview = ({ theme }: GamePreviewProps) => {
         <>
           <div
             className="absolute inset-x-0 bottom-3 h-3"
-            style={{ backgroundColor: theme.horizon }}
+            style={{ backgroundColor: previewColors.horizon }}
           />
           <div
             className="absolute inset-x-0 bottom-0 h-3"
-            style={{ backgroundColor: theme.terrain }}
+            style={{ backgroundColor: previewColors.terrain }}
           />
           <div
             className="absolute right-2 top-0 h-7 w-2 border-x border-b-2"
-            style={{ backgroundColor: theme.obstacle, borderColor: theme.ink }}
+            style={{ backgroundColor: previewColors.obstacle, borderColor: palette.ink }}
           />
           <div
             className="absolute bottom-3 right-2 h-2 w-3 border-2"
-            style={{ backgroundColor: theme.obstacle, borderColor: theme.ink }}
+            style={{ backgroundColor: previewColors.obstacle, borderColor: palette.ink }}
           />
           <img
             alt=""
@@ -47,28 +48,28 @@ const GamePreview = ({ theme }: GamePreviewProps) => {
         <>
           <div
             className="absolute left-2 top-2 h-10 w-6 rotate-[-6deg] border-2 bg-white"
-            style={{ borderColor: theme.ink }}
+            style={{ borderColor: palette.ink }}
           >
             <div
               className="mx-auto mt-1 h-3 w-3 rounded-full"
-              style={{ backgroundColor: theme.obstacle }}
+              style={{ backgroundColor: previewColors.obstacle }}
             />
             <div
               className="mx-auto mt-1 h-3 w-4"
-              style={{ backgroundColor: theme.horizon }}
+              style={{ backgroundColor: previewColors.horizon }}
             />
           </div>
           <div
             className="absolute right-2 top-4 h-10 w-6 rotate-[7deg] border-2 bg-white"
-            style={{ borderColor: theme.ink }}
+            style={{ borderColor: palette.ink }}
           >
             <div
               className="mx-auto mt-1 h-3 w-3 rounded-full"
-              style={{ backgroundColor: theme.character }}
+              style={{ backgroundColor: previewColors.character }}
             />
             <div
               className="mx-auto mt-1 h-3 w-4"
-              style={{ backgroundColor: theme.obstacle }}
+              style={{ backgroundColor: previewColors.obstacle }}
             />
           </div>
         </>
@@ -78,15 +79,15 @@ const GamePreview = ({ theme }: GamePreviewProps) => {
         <>
           <div
             className="absolute left-2 top-3 h-1 w-9 rotate-[-18deg]"
-            style={{ backgroundColor: theme.obstacle }}
+            style={{ backgroundColor: previewColors.obstacle }}
           />
           <div
             className="absolute left-3 top-7 h-1 w-7 rotate-[12deg]"
-            style={{ backgroundColor: theme.character }}
+            style={{ backgroundColor: previewColors.character }}
           />
           <div
             className="absolute left-3 top-11 h-1 w-8 rotate-[-9deg]"
-            style={{ backgroundColor: theme.accent }}
+            style={{ backgroundColor: palette.primary }}
           />
         </>
       )}
@@ -95,14 +96,14 @@ const GamePreview = ({ theme }: GamePreviewProps) => {
         <>
           <div
             className="absolute left-2 top-3 h-10 w-8 rotate-[-9deg] border-2"
-            style={{ backgroundColor: theme.surface, borderColor: theme.ink }}
+            style={{ backgroundColor: palette.surface, borderColor: palette.ink }}
           />
           <div
             className="absolute right-2 top-2 flex h-10 w-8 rotate-[8deg] items-center justify-center border-2 font-['Press_Start_2P',_monospace] text-sm"
             style={{
-              backgroundColor: theme.accent,
-              borderColor: theme.ink,
-              color: theme.ink,
+              backgroundColor: palette.primary,
+              borderColor: palette.ink,
+              color: palette.ink,
             }}
           >
             ?

@@ -192,17 +192,17 @@ const AdminDashboard: React.FC = () => {
           /* =========================================================
              STATE 1: CREATE / RECOVER SESSION
              ========================================================= */
-          <div className="max-w-xl mx-auto bg-white border-2 border-[#06080c] shadow-[6px_6px_0px_#06080c] p-6 sm:p-8 space-y-6">
-            <div className="border-b-2 border-[#06080c] pb-4 flex items-center justify-between">
+          <div className="max-w-xl mx-auto bg-gameSurface border-2 border-gameBorder shadow-[6px_6px_0px_var(--chalk-shadow)] p-6 sm:p-8 space-y-6">
+            <div className="border-b-2 border-gameBorder pb-4 flex items-center justify-between">
               <div>
-                <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-[#45474b] bg-[#edeef0] px-2 py-0.5 border border-[#06080c] font-bold">
+                <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-gameText bg-gameCoral px-2 py-0.5 border border-gameBorder font-bold">
                   HOST SETUP // 01
                 </span>
-                <h1 className="font-['Space_Mono'] text-2xl sm:text-3xl text-[#06080c] tracking-tight uppercase font-bold mt-1">
+                <h1 className="font-['Space_Mono'] text-2xl sm:text-3xl text-gameText tracking-tight uppercase font-bold mt-1">
                   {showRecover ? "Recover Session" : "Create New Game"}
                 </h1>
               </div>
-              <span className="material-symbols-outlined text-[#06080c] text-[28px]">
+              <span className="material-symbols-outlined text-gameText text-[28px]">
                 admin_panel_settings
               </span>
             </div>
@@ -213,10 +213,10 @@ const AdminDashboard: React.FC = () => {
                 <div className="flex flex-col gap-1.5">
                   <label
                     htmlFor="sessionName"
-                    className="font-['Silkscreen',_monospace] text-xs uppercase tracking-wider text-[#06080c] flex items-center justify-between font-bold"
+                    className="font-['Silkscreen',_monospace] text-xs uppercase tracking-wider text-gameText flex items-center justify-between font-bold"
                   >
                     <span>Game / Event Name</span>
-                    <span className="text-[#45474b] font-['Silkscreen',_monospace] text-[10px]">
+                    <span className="text-gameMuted font-['Silkscreen',_monospace] text-[10px]">
                       [{sessionName.length}/30]
                     </span>
                   </label>
@@ -228,13 +228,13 @@ const AdminDashboard: React.FC = () => {
                     value={sessionName}
                     onChange={(e) => setSessionName(e.target.value)}
                     placeholder="e.g. Friday Team Game Night"
-                    className="w-full bg-white text-[#06080c] font-['Space_Mono',_monospace] text-base px-4 py-3 border-2 border-[#06080c] shadow-[2px_2px_0px_#06080c] focus:outline-none focus:shadow-[4px_4px_0px_#06080c] transition-shadow placeholder:text-[#76777b]"
+                    className="w-full bg-gameSurface text-gameText font-['Space_Mono',_monospace] text-base px-4 py-3 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] focus:outline-none focus:shadow-[4px_4px_0px_var(--chalk-shadow)] transition-shadow placeholder:text-gameMuted"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={!sessionName.trim() || isCreating}
-                  className="w-full bg-[#06080c] text-white font-['Space_Mono'] text-base uppercase tracking-wider py-4 border-2 border-[#06080c] shadow-[4px_4px_0px_#76777b] hover:bg-[#1e2024] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer font-bold disabled:opacity-50"
+                  className="w-full bg-gameMint text-gameText font-['Space_Mono'] text-base uppercase tracking-wider py-4 border-2 border-gameBorder shadow-[4px_4px_0px_var(--chalk-shadow)] hover:brightness-95 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer font-bold disabled:opacity-50"
                 >
                   {isCreating ? (
                     <>
@@ -257,10 +257,10 @@ const AdminDashboard: React.FC = () => {
                 <div className="flex flex-col gap-1.5">
                   <label
                     htmlFor="recoverCode"
-                    className="font-['Silkscreen',_monospace] text-xs uppercase tracking-wider text-[#06080c] flex items-center justify-between font-bold"
+                    className="font-['Silkscreen',_monospace] text-xs uppercase tracking-wider text-gameText flex items-center justify-between font-bold"
                   >
                     <span>Existing Session Code</span>
-                    <span className="text-[#45474b] font-['Silkscreen',_monospace] text-[10px]">
+                    <span className="text-gameMuted font-['Silkscreen',_monospace] text-[10px]">
                       [6 CHARS]
                     </span>
                   </label>
@@ -274,18 +274,18 @@ const AdminDashboard: React.FC = () => {
                       setRecoverCode(e.target.value.toUpperCase())
                     }
                     placeholder="e.g. W40X9A"
-                    className="w-full bg-white font-['Space_Mono'] text-lg text-[#06080c] tracking-widest px-4 py-3 border-2 border-[#06080c] shadow-[2px_2px_0px_#06080c] focus:outline-none focus:shadow-[4px_4px_0px_#06080c] transition-shadow uppercase placeholder:text-[#76777b] placeholder:font-['Space_Mono',_monospace] placeholder:text-sm placeholder:tracking-normal"
+                    className="w-full bg-gameSurface font-['Space_Mono'] text-lg text-gameText tracking-widest px-4 py-3 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] focus:outline-none focus:shadow-[4px_4px_0px_var(--chalk-shadow)] transition-shadow uppercase placeholder:text-gameMuted placeholder:font-['Space_Mono',_monospace] placeholder:text-sm placeholder:tracking-normal"
                   />
                 </div>
                 {recoverError && (
-                  <div className="bg-[#ffdad6] border-2 border-[#ba1a1a] p-3 text-[#93000a] font-['Space_Mono',_monospace] text-xs font-bold">
+                  <div className="bg-gameCoral border-2 border-gameDanger p-3 text-gameText font-['Space_Mono',_monospace] text-xs font-bold">
                     {recoverError}
                   </div>
                 )}
                 <button
                   type="submit"
                   disabled={!recoverCode.trim() || isRecovering}
-                  className="w-full bg-[#06080c] text-white font-['Space_Mono'] text-base uppercase tracking-wider py-4 border-2 border-[#06080c] shadow-[4px_4px_0px_#76777b] hover:bg-[#1e2024] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer font-bold disabled:opacity-50"
+                  className="w-full bg-gameMint text-gameText font-['Space_Mono'] text-base uppercase tracking-wider py-4 border-2 border-gameBorder shadow-[4px_4px_0px_var(--chalk-shadow)] hover:brightness-95 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer font-bold disabled:opacity-50"
                 >
                   {isRecovering ? (
                     <>
@@ -305,15 +305,15 @@ const AdminDashboard: React.FC = () => {
             )}
 
             {/* Recover / Toggle Footer Banner */}
-            <div className="pt-4 border-t-2 border-[#06080c] text-center">
-              <p className="font-['Space_Mono',_monospace] text-sm text-[#45474b]">
+            <div className="pt-4 border-t-2 border-gameBorder text-center">
+              <p className="font-['Space_Mono',_monospace] text-sm text-gameMuted">
                 {showRecover ? (
                   <>
                     Need to start fresh?{" "}
                     <button
                       type="button"
                       onClick={() => setShowRecover(false)}
-                      className="text-[#06080c] font-bold hover:underline cursor-pointer uppercase"
+                      className="text-gameText font-bold hover:underline cursor-pointer uppercase"
                     >
                       Create a New Game
                     </button>
@@ -324,7 +324,7 @@ const AdminDashboard: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowRecover(true)}
-                      className="text-[#06080c] font-bold hover:underline cursor-pointer uppercase"
+                      className="text-gameText font-bold hover:underline cursor-pointer uppercase"
                     >
                       Recover Session
                     </button>
@@ -339,33 +339,33 @@ const AdminDashboard: React.FC = () => {
              ========================================================= */
           <div className="space-y-8">
             {/* Top Control Banner */}
-            <div className="bg-white border-2 border-[#06080c] p-6 shadow-[6px_6px_0px_#06080c] flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="bg-gameSurface border-2 border-gameBorder p-6 shadow-[6px_6px_0px_var(--chalk-shadow)] flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-2.5 h-2.5 bg-[#06080c] animate-ping" />
-                  <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-[#06080c] bg-[#edeef0] px-2 py-0.5 border border-[#06080c] font-bold">
+                  <span className="w-2.5 h-2.5 bg-gameMint animate-ping" />
+                  <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-gameText bg-gameSuccess px-2 py-0.5 border border-gameBorder font-bold">
                     LIVE HOST DECK
                   </span>
                 </div>
-                <h1 className="font-['Space_Mono'] text-2xl sm:text-3xl text-[#06080c] uppercase font-bold tracking-tight">
+                <h1 className="font-['Space_Mono'] text-2xl sm:text-3xl text-gameText uppercase font-bold tracking-tight">
                   {currentSession.name || "Game Session"}
                 </h1>
               </div>
 
               {/* Session Code Display & Share Box */}
-              <div className="flex items-center gap-3 bg-[#f8f9fb] border-2 border-[#06080c] p-3 shadow-[2px_2px_0px_#06080c]">
+              <div className="flex items-center gap-3 bg-gameBg border-2 border-gameBorder p-3 shadow-[2px_2px_0px_var(--chalk-shadow)]">
                 <div>
-                  <span className="font-['Space_Mono',_monospace] text-[10px] uppercase text-[#45474b] font-bold block">
+                  <span className="font-['Space_Mono',_monospace] text-[10px] uppercase text-gameMuted font-bold block">
                     SESSION CODE
                   </span>
-                  <span className="font-['Space_Mono'] text-2xl text-[#06080c] font-bold tracking-wider">
+                  <span className="font-['Space_Mono'] text-2xl text-gameText font-bold tracking-wider">
                     {currentSession.code}
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={handleCopyCode}
-                  className="bg-[#06080c] text-white px-3 py-2 border border-[#06080c] font-['Space_Mono',_monospace] text-xs uppercase hover:bg-[#1e2024] active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer font-bold flex items-center gap-1"
+                  className="bg-gameBorder text-white px-3 py-2 border border-gameBorder font-['Space_Mono',_monospace] text-xs uppercase hover:brightness-95 active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer font-bold flex items-center gap-1"
                 >
                   <span className="material-symbols-outlined text-[16px]">
                     {copied ? "check" : "content_copy"}
@@ -377,7 +377,7 @@ const AdminDashboard: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowEndConfirmModal(true)}
-                className="self-start md:self-center bg-[#06080c] text-white font-['Space_Mono'] text-xs uppercase px-4 py-2.5 border-2 border-[#06080c] shadow-[2px_2px_0px_#76777b] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none hover:bg-[#1e2024] cursor-pointer font-bold"
+                className="self-start md:self-center bg-gameDanger text-gameText font-['Space_Mono'] text-xs uppercase px-4 py-2.5 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none hover:brightness-95 cursor-pointer font-bold"
               >
                 [ END SESSION ]
               </button>
@@ -388,20 +388,20 @@ const AdminDashboard: React.FC = () => {
               {/* Left Column: Roster & Controls */}
               <div className="space-y-6">
                 {/* Mode Settings & Trigger Action */}
-                <div className="bg-white border-2 border-[#06080c] p-6 shadow-[4px_4px_0px_#06080c] space-y-4">
-                  <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-[#45474b] font-bold block">
+                <div className="bg-gameSurface border-2 border-gameBorder p-6 shadow-[4px_4px_0px_var(--chalk-shadow)] space-y-4">
+                  <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-gameMuted font-bold block">
                     GAME MODE SETTINGS
                   </span>
 
                   {/* Toggle Mode Control */}
-                  <div className="flex items-center justify-between border-2 border-[#06080c] p-3 bg-[#f8f9fb]">
+                  <div className="flex items-center justify-between border-2 border-gameBorder p-3 bg-gameBg">
                     <div>
-                      <span className="font-['Space_Mono'] text-sm font-bold uppercase text-[#06080c] block">
+                      <span className="font-['Space_Mono'] text-sm font-bold uppercase text-gameText block">
                         {isAutoAssign
                           ? "Auto-Assign Mode"
                           : "Manual Assign Mode"}
                       </span>
-                      <span className="font-['Space_Mono',_monospace] text-[10px] text-[#45474b]">
+                      <span className="font-['Space_Mono',_monospace] text-[10px] text-gameMuted">
                         {isAutoAssign
                           ? "Distribute photos automatically"
                           : "Manually match photos to players"}
@@ -410,15 +410,15 @@ const AdminDashboard: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setIsAutoAssign(!isAutoAssign)}
-                      className={`w-12 h-6 border-2 border-[#06080c] flex items-center p-0.5 cursor-pointer transition-colors ${
-                        isAutoAssign ? "bg-[#06080c]" : "bg-white"
+                      className={`w-12 h-6 border-2 border-gameBorder flex items-center p-0.5 cursor-pointer transition-colors ${
+                        isAutoAssign ? "bg-gameMint" : "bg-gameSurface"
                       }`}
                     >
                       <div
-                        className={`w-4 h-4 bg-white border border-[#06080c] transition-transform ${
+                        className={`w-4 h-4 bg-gameSurface border border-gameBorder transition-transform ${
                           isAutoAssign
-                            ? "translate-x-6 bg-white"
-                            : "translate-x-0 bg-[#06080c]"
+                            ? "translate-x-6 bg-gameSurface"
+                            : "translate-x-0 bg-gameBorder"
                         }`}
                       />
                     </button>
@@ -432,7 +432,7 @@ const AdminDashboard: React.FC = () => {
                       disabled={
                         photos.length === 0 || participants.length === 0
                       }
-                      className="w-full whitespace-nowrap bg-[#06080c] text-white font-['Space_Mono'] text-[10px] sm:text-xs uppercase tracking-wider px-3 py-3 border-2 border-[#06080c] shadow-[2px_2px_0px_#76777b] hover:bg-[#1e2024] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer font-bold disabled:opacity-50"
+                      className="w-full whitespace-nowrap bg-gameMint text-gameText font-['Space_Mono'] text-[10px] sm:text-xs uppercase tracking-wider px-3 py-3 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] hover:brightness-95 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer font-bold disabled:opacity-50"
                     >
                       <span className="material-symbols-outlined shrink-0 text-[18px]">
                         shuffle
@@ -446,7 +446,7 @@ const AdminDashboard: React.FC = () => {
                       disabled={
                         photos.length === 0 || participants.length === 0
                       }
-                      className="w-full whitespace-nowrap bg-[#06080c] text-white font-['Space_Mono'] text-[10px] sm:text-xs uppercase tracking-wider px-3 py-3 border-2 border-[#06080c] shadow-[2px_2px_0px_#76777b] hover:bg-[#1e2024] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer font-bold disabled:opacity-50"
+                      className="w-full whitespace-nowrap bg-gameMint text-gameText font-['Space_Mono'] text-[10px] sm:text-xs uppercase tracking-wider px-3 py-3 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] hover:brightness-95 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center justify-center gap-1 sm:gap-2 cursor-pointer font-bold disabled:opacity-50"
                     >
                       <span className="material-symbols-outlined shrink-0 text-[18px]">
                         edit_square
@@ -457,22 +457,22 @@ const AdminDashboard: React.FC = () => {
                 </div>
 
                 {/* Participant Roster */}
-                <div className="bg-white border-2 border-[#06080c] p-6 shadow-[4px_4px_0px_#06080c] space-y-4">
-                  <div className="flex items-center justify-between border-b-2 border-[#06080c] pb-3">
-                    <span className="font-['Space_Mono'] text-base uppercase font-bold text-[#06080c]">
+                <div className="bg-gameSurface border-2 border-gameBorder p-6 shadow-[4px_4px_0px_var(--chalk-shadow)] space-y-4">
+                  <div className="flex items-center justify-between border-b-2 border-gameBorder pb-3">
+                    <span className="font-['Space_Mono'] text-base uppercase font-bold text-gameText">
                       Lobby Roster
                     </span>
-                    <span className="font-['Space_Mono',_monospace] text-xs font-bold bg-[#edeef0] px-2 py-0.5 border border-[#06080c]">
+                    <span className="font-['Space_Mono',_monospace] text-xs font-bold bg-gameGold px-2 py-0.5 border border-gameBorder">
                       {participants.length} CONNECTED
                     </span>
                   </div>
 
                   {participants.length === 0 ? (
-                    <div className="text-center py-6 border-2 border-dashed border-[#06080c] bg-[#f8f9fb]">
-                      <span className="material-symbols-outlined text-[24px] text-[#76777b]">
+                    <div className="text-center py-6 border-2 border-dashed border-gameBorder bg-gameBg">
+                      <span className="material-symbols-outlined text-[24px] text-gameMuted">
                         group_off
                       </span>
-                      <p className="font-['Space_Mono',_monospace] text-xs text-[#45474b] mt-1">
+                      <p className="font-['Space_Mono',_monospace] text-xs text-gameMuted mt-1">
                         Waiting for players to join...
                       </p>
                     </div>
@@ -486,11 +486,11 @@ const AdminDashboard: React.FC = () => {
                         return (
                           <li
                             key={p.id || idx}
-                            className="flex items-center justify-between bg-[#f8f9fb] border-2 border-[#06080c] p-2.5"
+                            className="flex items-center justify-between bg-gameBg border-2 border-gameBorder p-2.5"
                           >
                             <div className="flex items-center gap-3">
                               {/* Thumbnail of assigned photo or placeholder */}
-                              <div className="w-8 h-8 border border-[#06080c] bg-white overflow-hidden flex items-center justify-center shrink-0">
+                              <div className="w-8 h-8 border border-gameBorder bg-gameSurface overflow-hidden flex items-center justify-center shrink-0">
                                 {assignedPhoto ? (
                                   <img
                                     src={assignedPhoto.url}
@@ -498,14 +498,14 @@ const AdminDashboard: React.FC = () => {
                                     className="w-full h-full object-cover"
                                   />
                                 ) : (
-                                  <span className="w-2 h-2 bg-[#06080c]" />
+                                  <span className="w-2 h-2 bg-gameBorder" />
                                 )}
                               </div>
-                              <span className="font-['Space_Mono',_monospace] text-xs font-bold text-[#06080c]">
+                              <span className="font-['Space_Mono',_monospace] text-xs font-bold text-gameText">
                                 {p.name}
                               </span>
                             </div>
-                            <span className="font-['Space_Mono',_monospace] text-[10px] uppercase bg-white border border-[#06080c] px-2 py-0.5 text-[#06080c]">
+                            <span className={`font-['Space_Mono',_monospace] text-[10px] uppercase border border-gameBorder px-2 py-0.5 text-gameText ${p.photo_assigned ? "bg-gameSuccess" : "bg-gameGold"}`}>
                               {p.photo_assigned ? "ASSIGNED" : "WAITING"}
                             </span>
                           </li>
@@ -518,17 +518,17 @@ const AdminDashboard: React.FC = () => {
 
               {/* Right Column: Device Photo Uploader & Gallery */}
               <div className="lg:col-span-2 space-y-6">
-                <div className="bg-white border-2 border-[#06080c] p-6 shadow-[6px_6px_0px_#06080c] space-y-6">
-                  <div className="border-b-2 border-[#06080c] pb-4 flex items-center justify-between">
+                <div className="bg-gameSurface border-2 border-gameBorder p-6 shadow-[6px_6px_0px_var(--chalk-shadow)] space-y-6">
+                  <div className="border-b-2 border-gameBorder pb-4 flex items-center justify-between">
                     <div>
-                      <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-[#45474b] bg-[#edeef0] px-2 py-0.5 border border-[#06080c] font-bold">
+                      <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-gameMuted bg-gameGold px-2 py-0.5 border border-gameBorder font-bold">
                         MEDIA MANAGER // 02
                       </span>
-                      <h3 className="font-['Space_Mono'] text-xl text-[#06080c] uppercase font-bold mt-1">
+                      <h3 className="font-['Space_Mono'] text-xl text-gameText uppercase font-bold mt-1">
                         Active Photo Pool
                       </h3>
                     </div>
-                    <span className="font-['Space_Mono',_monospace] text-xs font-bold bg-[#edeef0] border border-[#06080c] px-3 py-1">
+                    <span className="font-['Space_Mono',_monospace] text-xs font-bold bg-gameGold border border-gameBorder px-3 py-1">
                       {photos.length} ITEMS
                     </span>
                   </div>
@@ -538,21 +538,21 @@ const AdminDashboard: React.FC = () => {
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
-                    className={`border-2 border-dashed border-[#06080c] p-6 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-2 ${
+                    className={`border-2 border-dashed border-gameBorder p-6 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-2 ${
                       isDragging
-                        ? "bg-[#edeef0]"
-                        : "bg-[#f8f9fb] hover:bg-[#edeef0]"
+                        ? "bg-gameGold"
+                        : "bg-gameBg hover:bg-gameGold"
                     }`}
                   >
-                    <span className="material-symbols-outlined text-[32px] text-[#06080c]">
+                    <span className="material-symbols-outlined text-[32px] text-gameText">
                       {isUploading ? "sync" : "file_upload"}
                     </span>
-                    <span className="font-['Space_Mono'] text-xs uppercase font-bold text-[#06080c]">
+                    <span className="font-['Space_Mono'] text-xs uppercase font-bold text-gameText">
                       {isUploading
                         ? "[ COMPRESSING & UPLOADING... ]"
                         : "[ Select / Drop Device Photos ]"}
                     </span>
-                    <span className="font-['Space_Mono',_monospace] text-[10px] text-[#45474b]">
+                    <span className="font-['Space_Mono',_monospace] text-[10px] text-gameMuted">
                       Supports JPG, PNG, GIF (Select multiple files)
                     </span>
                     <input
@@ -567,14 +567,14 @@ const AdminDashboard: React.FC = () => {
 
                   {/* Photo Preview Grid */}
                   {photos.length === 0 ? (
-                    <div className="border-2 border-dashed border-[#06080c] bg-[#f8f9fb] p-12 text-center space-y-2">
-                      <span className="material-symbols-outlined text-[32px] text-[#06080c]">
+                    <div className="border-2 border-dashed border-gameBorder bg-gameBg p-12 text-center space-y-2">
+                      <span className="material-symbols-outlined text-[32px] text-gameText">
                         add_photo_alternate
                       </span>
-                      <p className="font-['Space_Mono'] text-sm text-[#06080c] uppercase font-bold">
+                      <p className="font-['Space_Mono'] text-sm text-gameText uppercase font-bold">
                         No Photos Uploaded
                       </p>
-                      <p className="font-['Space_Mono',_monospace] text-xs text-[#45474b]">
+                      <p className="font-['Space_Mono',_monospace] text-xs text-gameMuted">
                         Upload images from your device above to assemble the
                         party photo deck.
                       </p>
@@ -584,12 +584,12 @@ const AdminDashboard: React.FC = () => {
                       {photos.map((item, i) => (
                         <div
                           key={item.id || i}
-                          className="relative border-2 border-[#06080c] bg-[#06080c] p-1.5 shadow-[3px_3px_0px_#06080c] group"
+                          className="relative border-2 border-gameBorder bg-gameBorder p-1.5 shadow-[3px_3px_0px_var(--chalk-shadow)] group"
                         >
                           <img
                             src={item.url}
                             alt={`Pool photo ${i + 1}`}
-                            className="w-full h-32 object-cover border border-[#06080c] bg-white"
+                            className="w-full h-32 object-cover border border-gameBorder bg-gameSurface"
                           />
                         </div>
                       ))}
@@ -612,17 +612,17 @@ const AdminDashboard: React.FC = () => {
 
         {/* End Session Confirmation Modal */}
         {showEndConfirmModal && (
-          <div className="fixed inset-0 z-50 bg-[#06080c]/80 flex items-center justify-center p-4">
-            <div className="bg-white border-2 border-[#06080c] shadow-[8px_8px_0px_#06080c] w-full max-w-md p-6 space-y-4">
-              <div className="border-b-2 border-[#06080c] pb-3">
-                <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-[#45474b] font-bold block">
+          <div className="fixed inset-0 z-50 bg-gameBorder/80 flex items-center justify-center p-4">
+            <div className="bg-gameSurface border-2 border-gameBorder shadow-[8px_8px_0px_var(--chalk-shadow)] w-full max-w-md p-6 space-y-4">
+              <div className="border-b-2 border-gameBorder pb-3">
+                <span className="font-['Space_Mono',_monospace] text-[10px] uppercase tracking-widest text-gameMuted font-bold block">
                   SYSTEM CONFIRMATION
                 </span>
-                <h3 className="font-['Space_Mono'] text-lg font-bold text-[#06080c] uppercase">
+                <h3 className="font-['Space_Mono'] text-lg font-bold text-gameText uppercase">
                   End Game Session?
                 </h3>
               </div>
-              <p className="font-['Space_Mono',_monospace] text-xs text-[#06080c]">
+              <p className="font-['Space_Mono',_monospace] text-xs text-gameText">
                 Are you sure you want to terminate this room? All connected
                 players will be notified that the session has ended and returned
                 to the main menu.
@@ -631,14 +631,14 @@ const AdminDashboard: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowEndConfirmModal(false)}
-                  className="bg-white text-[#06080c] font-['Space_Mono'] text-xs uppercase px-4 py-2 border-2 border-[#06080c] shadow-[2px_2px_0px_#06080c] hover:bg-[#edeef0] cursor-pointer font-bold"
+                  className="bg-gameSurface text-gameText font-['Space_Mono'] text-xs uppercase px-4 py-2 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] hover:bg-gameGold cursor-pointer font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={confirmAndEndSession}
-                  className="bg-[#06080c] text-white font-['Space_Mono'] text-xs uppercase px-4 py-2 border-2 border-[#06080c] shadow-[2px_2px_0px_#76777b] hover:bg-[#1e2024] cursor-pointer font-bold"
+                  className="bg-gameDanger text-gameText font-['Space_Mono'] text-xs uppercase px-4 py-2 border-2 border-gameBorder shadow-[2px_2px_0px_var(--chalk-shadow)] hover:brightness-95 cursor-pointer font-bold"
                 >
                   End Session
                 </button>

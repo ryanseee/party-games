@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <SessionProvider>
-        <div className="min-h-screen text-[#121212] font-['Space_Mono',_monospace]">
+        <div className="min-h-screen text-gameText font-['Space_Mono',_monospace]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin" element={<AdminDashboard />} />

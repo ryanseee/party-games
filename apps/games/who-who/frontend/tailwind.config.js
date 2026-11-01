@@ -3,19 +3,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gameBg: "#e8eaed",
-        gameSurface: "#f1f3f4",
-        gameBorder: "#121212",
-        gameAccent: "#121212",
-        gameAccentHover: "#202124",
-        gameText: "#121212",
-        gameMuted: "#5f6368",
+        gameBg: "var(--chalk-paper)",
+        gameSurface: "var(--chalk-surface)",
+        gameBorder: "var(--chalk-ink)",
+        gameAccent: "var(--chalk-amber)",
+        gameAccentHover: "var(--chalk-amber-hover)",
+        gameText: "var(--chalk-ink)",
+        gameMuted: "var(--chalk-muted)",
+        gameMint: "var(--chalk-mint)",
+        gameCoral: "var(--chalk-coral)",
+        gameGold: "var(--chalk-gold)",
+        gameSuccess: "var(--chalk-success)",
+        gameDanger: "var(--chalk-danger)",
       },
       borderRadius: {
         game: "0px",
       },
       boxShadow: {
-        game: "4px 4px 0px #121212",
+        game: "4px 4px 0px var(--chalk-shadow)",
       },
       fontFamily: {
         pixel: ['"Press Start 2P"', "monospace"],

@@ -410,7 +410,7 @@ function App() {
   return (
     <main
       className="page"
-      style={{ backgroundColor: FLAPPY_FLAP_THEME.surface }}
+      style={{ backgroundColor: FLAPPY_FLAP_THEME.palette.surface }}
     >
       <header className="topbar">
         <a className="back-link" href={HUB_URL}>
@@ -423,8 +423,8 @@ function App() {
         <div
           className="game-stage"
           style={{
-            backgroundColor: FLAPPY_FLAP_THEME.sky,
-            borderColor: FLAPPY_FLAP_THEME.ink,
+            backgroundColor: FLAPPY_FLAP_THEME.previewColors.sky,
+            borderColor: FLAPPY_FLAP_THEME.palette.ink,
           }}
         >
           <canvas
