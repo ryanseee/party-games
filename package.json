@@ -5,16 +5,19 @@
   "workspaces": [
     "apps/hub/frontend",
     "apps/games/who-who/frontend",
-    "apps/games/who-who/backend"
+    "apps/games/who-who/backend",
+    "apps/games/flappy-flap/frontend"
   ],
   "scripts": {
-    "dev": "concurrently -n \"HUB,WHO-FE,WHO-BE\" -c \"cyan,green,yellow\" \"npm run dev -w apps/hub/frontend\" \"npm run dev -w apps/games/who-who/frontend\" \"npm run dev -w apps/games/who-who/backend\"",
+    "dev": "concurrently -n \"HUB,WHO-FE,WHO-BE,FLAPPY-FLAP\" -c \"cyan,green,yellow,magenta\" \"npm run dev -w apps/hub/frontend\" \"npm run dev -w apps/games/who-who/frontend\" \"npm run dev -w apps/games/who-who/backend\" \"npm run dev -w apps/games/flappy-flap/frontend\"",
     "dev:hub": "npm run dev -w apps/hub/frontend",
     "dev:who-who-frontend": "npm run dev -w apps/games/who-who/frontend",
     "dev:who-who-backend": "npm run dev -w apps/games/who-who/backend",
-    "build": "npm run build:hub && npm run build:who-who",
+    "dev:flappy-flap": "npm run dev -w apps/games/flappy-flap/frontend",
+    "build": "npm run build:hub && npm run build:who-who && npm run build:flappy-flap",
     "build:hub": "npm run build -w apps/hub/frontend",
-    "build:who-who": "npm run build -w apps/games/who-who/frontend && npm run build -w apps/games/who-who/backend"
+    "build:who-who": "npm run build -w apps/games/who-who/frontend && npm run build -w apps/games/who-who/backend",
+    "build:flappy-flap": "npm run build -w apps/games/flappy-flap/frontend"
   },
   "devDependencies": {
     "concurrently": "^10.0.5"

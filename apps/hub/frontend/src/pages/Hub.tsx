@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GAME_CATALOG, WHO_WHO_URL } from "../config/games";
+import GamePreview from "../components/GamePreview";
 
 const Hub: React.FC = () => {
   const [roomCode, setRoomCode] = useState("");
@@ -120,41 +121,58 @@ const Hub: React.FC = () => {
             {GAME_CATALOG.map((game) => (
               <article
                 key={game.id}
-                className="border-3 border-[#121212] shadow-[4px_4px_0px_#121212] bg-[#f1f3f4] flex flex-col justify-between hover:bg-white transition-colors duration-75"
+                className="flex flex-col justify-between border-3 transition-[filter,transform] duration-75 hover:brightness-105"
+                style={{
+                  backgroundColor: game.theme.surface,
+                  borderColor: game.theme.ink,
+                  boxShadow: `4px 4px 0px ${game.theme.shadow}`,
+                }}
               >
                 <div className="p-5">
-                  <div className="flex items-center justify-between pb-3 mb-4 border-b-2 border-[#121212]">
-                    <span className="font-['Silkscreen',_monospace] text-[10px] uppercase font-bold tracking-wider bg-[#dedfe2] px-2 py-0.5 border border-[#121212]">
+                  <div
+                    className="flex items-center justify-between pb-3 mb-4 border-b-2"
+                    style={{ borderColor: game.theme.ink }}
+                  >
+                    <span
+                      className="font-['Silkscreen',_monospace] text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 border"
+                      style={{
+                        backgroundColor: game.theme.accent,
+                        color: game.theme.ink,
+                        borderColor: game.theme.ink,
+                      }}
+                    >
                       {game.category}
                     </span>
-                    <span className="font-['Space_Mono',_monospace] text-xs font-bold text-[#202124]">
+                    <span
+                      className="font-['Space_Mono',_monospace] text-xs font-bold"
+                      style={{ color: game.theme.ink }}
+                    >
                       {game.minPlayers}-{game.maxPlayers} PLAYERS
                     </span>
                   </div>
 
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-16 h-16 bg-[#121212] text-[#f1f3f4] border-2 border-[#121212] shrink-0 flex items-center justify-center relative font-['Press_Start_2P',_monospace] text-xs">
-                      <div className="text-center text-[9px] select-none">
-                        [?]
-                        <div className="text-[8px] tracking-widest mt-1">
-                          ---
-                        </div>
-                      </div>
-                      <div className="absolute -top-1.5 bg-white text-[#121212] text-[8px] border border-[#121212] px-1 font-mono font-bold">
-                        NOTE
-                      </div>
-                    </div>
+                    <GamePreview theme={game.theme} />
                     <div>
-                      <h3 className="font-['Press_Start_2P',_monospace] text-sm md:text-base font-bold text-[#121212] mb-1">
+                      <h3
+                        className="font-['Press_Start_2P',_monospace] text-sm md:text-base font-bold mb-1"
+                        style={{ color: game.theme.ink }}
+                      >
                         {game.title}
                       </h3>
-                      <span className="text-[11px] font-['Silkscreen',_monospace] text-[#5f6368] block">
+                      <span
+                        className="text-[11px] font-['Silkscreen',_monospace] block"
+                        style={{ color: game.theme.ink }}
+                      >
                         {game.subtitle}
                       </span>
                     </div>
                   </div>
 
-                  <p className="font-['Space_Mono',_monospace] text-xs text-[#202124] leading-relaxed mb-4">
+                  <p
+                    className="font-['Space_Mono',_monospace] text-xs leading-relaxed mb-4"
+                    style={{ color: game.theme.ink }}
+                  >
                     {game.description}
                   </p>
                 </div>
@@ -164,9 +182,19 @@ const Hub: React.FC = () => {
                     type="button"
                     onClick={() => handleLaunchGame(game.url)}
                     disabled={!game.enabled}
-                    className={`w-full py-3 font-['Press_Start_2P',_monospace] text-xs uppercase border-3 border-[#121212] shadow-[4px_4px_0px_#121212] flex items-center justify-center gap-2 transition-all ${
+                    style={
                       game.enabled
-                        ? "bg-[#121212] text-[#f1f3f4] hover:bg-[#202124] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none cursor-pointer"
+                        ? {
+                            backgroundColor: game.theme.accent,
+                            color: game.theme.ink,
+                            borderColor: game.theme.ink,
+                            boxShadow: `4px 4px 0px ${game.theme.shadow}`,
+                          }
+                        : undefined
+                    }
+                    className={`w-full py-3 font-['Press_Start_2P',_monospace] text-xs uppercase border-3 flex items-center justify-center gap-2 transition-all ${
+                      game.enabled
+                        ? "hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-1 active:translate-y-1 active:shadow-none cursor-pointer"
                         : "bg-[#9aa0a6] text-[#202124] cursor-not-allowed opacity-60 shadow-none"
                     }`}
                   >
