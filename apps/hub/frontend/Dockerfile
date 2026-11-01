@@ -16,6 +16,6 @@ ENV VITE_FLAPPY_FLAP_URL=$VITE_FLAPPY_FLAP_URL
 RUN npm run build -w apps/hub/frontend
 
 FROM nginx:1.27-alpine
-COPY apps/hub/frontend/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /workspace/apps/hub/frontend/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /workspace/apps/hub/frontend/dist /usr/share/nginx/html
 EXPOSE 80
