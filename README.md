@@ -69,6 +69,8 @@ flappy-flap.example.com  Flappy Flap
 
 For the Flappy Flap service, set the build context to the repository root so its
 Dockerfile can install the npm workspace dependencies.
+Set the Hub service build context to the repository root as well; its frontend
+imports the shared Flappy Flap preview sprite from the monorepo.
 
 Set these values in Dokploy:
 
