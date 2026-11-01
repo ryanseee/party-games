@@ -3,6 +3,22 @@ import Layout from "../components/Layout";
 import { useSession } from "../context/SessionContext";
 import ManualAssignmentModal from "../components/ManualAssignmentModal";
 
+const copyTextFallback = (text: string) => {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.setAttribute("readonly", "");
+  textArea.style.position = "fixed";
+  textArea.style.opacity = "0";
+  document.body.appendChild(textArea);
+
+  try {
+    textArea.select();
+    return document.execCommand("copy");
+  } finally {
+    document.body.removeChild(textArea);
+  }
+};
+
 const AdminDashboard: React.FC = () => {
   const {
     currentSession,
@@ -24,6 +40,7 @@ const AdminDashboard: React.FC = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [isRecovering, setIsRecovering] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
   const [recoverError, setRecoverError] = useState("");
 
   // Confirmation modal state
@@ -72,11 +89,32 @@ const AdminDashboard: React.FC = () => {
   };
 
   // Copy session code
-  const handleCopyCode = () => {
-    if (currentSession?.code) {
-      navigator.clipboard.writeText(currentSession.code);
+  const handleCopyCode = async () => {
+    const code = currentSession?.code;
+    if (!code) return;
+
+    setCopied(false);
+    setCopyFailed(false);
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        try {
+          await navigator.clipboard.writeText(code);
+        } catch {
+          if (!copyTextFallback(code)) {
+            throw new Error("Clipboard copy command was rejected");
+          }
+        }
+      } else if (!copyTextFallback(code)) {
+        throw new Error("Clipboard copy command was rejected");
+      }
+
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error("Failed to copy session code:", error);
+      setCopyFailed(true);
+      setTimeout(() => setCopyFailed(false), 3000);
     }
   };
 
@@ -368,9 +406,9 @@ const AdminDashboard: React.FC = () => {
                   className="bg-gameBorder text-white px-3 py-2 border border-gameBorder font-['Space_Mono',_monospace] text-xs uppercase hover:brightness-95 active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer font-bold flex items-center gap-1"
                 >
                   <span className="material-symbols-outlined text-[16px]">
-                    {copied ? "check" : "content_copy"}
+                    {copied ? "check" : copyFailed ? "error" : "content_copy"}
                   </span>
-                  <span>{copied ? "COPIED" : "COPY"}</span>
+                  <span>{copied ? "COPIED" : copyFailed ? "FAILED" : "COPY"}</span>
                 </button>
               </div>
 
