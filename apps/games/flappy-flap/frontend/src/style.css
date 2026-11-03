@@ -188,3 +188,14 @@ canvas {
     margin-bottom: 8px;
   }
 }
+
+@media (max-width: 600px) {
+  .page {
+    min-height: 100dvh;
+    padding-bottom: 10px;
+  }
+
+  .game-card {
+    width: min(100%, 400px, calc((100dvh - 76px) * 0.5625));
+  }
+}
