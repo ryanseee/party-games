@@ -69,7 +69,7 @@ a {
 }
 
 .game-card {
-  width: min(100%, 288px);
+  width: min(100%, 400px);
   padding: 0;
 }
 
@@ -172,26 +172,6 @@ canvas {
   padding: 12px 18px;
 }
 
-.game-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin-top: 11px;
-  color: #69532b;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.game-footer strong {
-  margin-left: 3px;
-  font-size: 12px;
-}
-
-.controls {
-  color: #85642c;
-}
-
 .play-button:focus-visible,
 .pause-button:focus-visible,
 .back-link:focus-visible {
@@ -201,14 +181,10 @@ canvas {
 
 @media (max-width: 380px) {
   .page {
-    padding: 12px 12px 20px;
+    padding: 10px 8px 16px;
   }
 
   .topbar {
-    margin-bottom: 9px;
-  }
-
-  .controls {
-    display: none;
+    margin-bottom: 8px;
   }
 }

@@ -464,11 +464,6 @@ function App() {
             </button>
           )}
         </div>
-        <div className="game-footer">
-          <span>SCORE <strong>{score}</strong></span>
-          <span>BEST <strong>{best}</strong></span>
-          <span className="controls">TAP / SPACE TO FLAP</span>
-        </div>
       </section>
     </main>
   );
