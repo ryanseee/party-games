@@ -32,6 +32,7 @@ a {
 }
 
 .page {
+  --game-height-reserve: 96px;
   min-height: 100vh;
   padding: 18px 16px 24px;
   display: flex;
@@ -69,7 +70,7 @@ a {
 }
 
 .game-card {
-  width: min(100%, 400px);
+  width: min(100%, 400px, calc((100dvh - var(--game-height-reserve)) * 0.5625));
   padding: 0;
 }
 
@@ -191,11 +192,8 @@ canvas {
 
 @media (max-width: 600px) {
   .page {
+    --game-height-reserve: 76px;
     min-height: 100dvh;
     padding-bottom: 10px;
-  }
-
-  .game-card {
-    width: min(100%, 400px, calc((100dvh - 76px) * 0.5625));
   }
 }
